@@ -2,6 +2,8 @@ name: release
 
 on:
   push:
+    branches:
+      - master
   release:
     types: [published]
 
@@ -16,6 +18,7 @@ jobs:
         fetch-depth: '0'
     - name: Rebase to release branch
       run: |
+        git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
         git checkout release
         git rebase ${{ github.ref }} release
         git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:/refs/heads/release || echo "No changes to commit"
