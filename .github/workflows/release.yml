@@ -1,6 +1,7 @@
 name: release
 
 on:
+  push:
   release:
     types: [published]
 
@@ -11,6 +12,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        fetch-depth: '0'
     - name: Rebase to release branch
       run: |
         git fetch --prune --unshallow
