@@ -23,5 +23,5 @@ jobs:
         git log --oneline --decorate
         git branch -a
         # git checkout release
-        # git rebase ${{ github.ref }} release
-        # git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:release || echo "No changes to commit"
+        git rebase ${{ github.ref }} origin release
+        git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git || echo "No changes to commit"
