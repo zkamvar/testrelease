@@ -22,6 +22,6 @@ jobs:
         git fetch --prune --no-tags --depth=1 origin +refs/heads/*:refs/remotes/origin/*
         git log --oneline --decorate
         git branch -a
-        # git checkout release
-        git rebase ${{ github.ref }} origin/release
-        git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git || echo "No changes to commit"
+        git checkout origin/release
+        git rebase ${{ github.ref }}
+        git push --tags https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git || echo "No changes to commit"
