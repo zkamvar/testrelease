@@ -24,4 +24,4 @@ jobs:
         git branch -a
         git checkout origin/release
         git rebase ${{ github.ref }}
-        git push --tags https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git || echo "No changes to commit"
+        git push --tags https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:release|| echo "No changes to commit"
